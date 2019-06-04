@@ -1,0 +1,39 @@
+package utils.strategies;
+
+import utils.api.CacheableObject;
+import utils.custom.LfuCacheableObjectImpl;
+import utils.enums.StrategyType;
+
+public class LeastFrequentlyUsedStrategy<K, V> extends AbstractCacheableStrategy<K, V> {
+
+    public LeastFrequentlyUsedStrategy(final int maxSize) {
+        super(maxSize, StrategyType.LFU);
+        this.objects = new LfuCacheableObjectImpl[maxSize];
+    }
+
+    @Override
+    public boolean replaceIrrelevantObjectByStrategy(final K key, final V value) {
+        CacheableObject minObjectUsed = objects[0];
+        int minInvokeCount = minObjectUsed.getInvokeCount();
+
+        for (final CacheableObject o : objects) {
+            final int objectCount = o.getInvokeCount();
+
+            if (objectCount < minInvokeCount) {
+                minInvokeCount = o.getInvokeCount();
+                minObjectUsed = o;
+            }
+        }
+
+        minObjectUsed.setKey(key);
+        minObjectUsed.setValue(value);
+        minObjectUsed.setSeqNum(seqNum++);
+
+        return true;
+    }
+
+    @Override
+    public void afterFoundActionByStrategy(final CacheableObject o) {
+        o.incrementInvoke();
+    }
+}
