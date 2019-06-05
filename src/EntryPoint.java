@@ -2,9 +2,7 @@ import utils.CacheableUtils;
 import utils.api.CacheableMap;
 
 /**
- * подумал, сделал за 1.5 часа
- * тесты не успел
- * лол
+ * подумал, сделал за 1.5 часа, тесты не успел
  */
 
 public class EntryPoint {
