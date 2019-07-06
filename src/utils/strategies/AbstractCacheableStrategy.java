@@ -2,7 +2,7 @@ package utils.strategies;
 
 import utils.api.CacheableMap;
 import utils.api.CacheableObject;
-import utils.custom.LfuCacheableObjectImpl;
+import utils.custom.CacheableObjectImpl;
 import utils.enums.StrategyType;
 
 
@@ -29,9 +29,6 @@ public abstract class AbstractCacheableStrategy<K, V> implements CacheableMap<K,
     public V get(K key) {
         for (CacheableObject o : objects) {
             if (o != null && o.getHashKey() == key.hashCode()) {
-                //for example
-                System.out.println("key = " + o.getKey() + "\nInvokeCount = " + o.getInvokeCount());
-                //
                 afterFoundActionByStrategy(o);
                 return (V) o.getValue();
             }
@@ -50,9 +47,16 @@ public abstract class AbstractCacheableStrategy<K, V> implements CacheableMap<K,
                     return true;
                 }
             }
-            objects[seqNum] = new LfuCacheableObjectImpl<>(key, value, seqNum++);
+            objects[seqNum] = new CacheableObjectImpl<>(key, value, seqNum++);
         }
 
         return true;
+    }
+
+    protected void afterFoundActionByStrategy(CacheableObject o) {
+    }
+
+    protected boolean replaceIrrelevantObjectByStrategy(K key, V value) {
+        return false;
     }
 }

@@ -20,14 +20,10 @@ public class LeastRecentlyUsedStrategy<K, V> extends AbstractCacheableStrategy<K
                 o.setKey(key);
                 o.setValue(value);
                 o.setSeqNum(seqNum++);
+                return true;
             }
         }
 
-        return true;
-    }
-
-    @Override
-    public void afterFoundActionByStrategy(final CacheableObject o) {
-        // stub
+        return false;
     }
 }

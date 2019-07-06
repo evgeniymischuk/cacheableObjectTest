@@ -8,10 +8,6 @@ public interface CacheableMap<K, V> {
 
     boolean add(K key, V value);
 
-    boolean replaceIrrelevantObjectByStrategy(K key, V value);
-
-    void afterFoundActionByStrategy(CacheableObject o);
-
     int getMaxSize();
 
     StrategyType getType();

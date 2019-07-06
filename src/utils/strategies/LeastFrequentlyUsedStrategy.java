@@ -1,14 +1,14 @@
 package utils.strategies;
 
 import utils.api.CacheableObject;
-import utils.custom.LfuCacheableObjectImpl;
+import utils.custom.CacheableObjectImpl;
 import utils.enums.StrategyType;
 
 public class LeastFrequentlyUsedStrategy<K, V> extends AbstractCacheableStrategy<K, V> {
 
     public LeastFrequentlyUsedStrategy(final int maxSize) {
         super(maxSize, StrategyType.LFU);
-        this.objects = new LfuCacheableObjectImpl[maxSize];
+        this.objects = new CacheableObjectImpl[maxSize];
     }
 
     @Override
@@ -20,7 +20,7 @@ public class LeastFrequentlyUsedStrategy<K, V> extends AbstractCacheableStrategy
             final int objectCount = o.getInvokeCount();
 
             if (objectCount < minInvokeCount) {
-                minInvokeCount = o.getInvokeCount();
+                minInvokeCount = objectCount;
                 minObjectUsed = o;
             }
         }
