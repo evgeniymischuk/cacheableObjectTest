@@ -21,8 +21,8 @@ public class CacheableMain {
                 map.add(i, i);
             }
             System.out.println("Strategy = " + map.getType());
-            // in LFU six display in LRU not
-            System.out.println("Result = " + map.get(6) + "\n");
+            // in LFU display, in LRU not
+            System.out.println("Result = " + (map.get(6) != null) + "\n");
         }
     }
 }

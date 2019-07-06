@@ -17,6 +17,6 @@ public enum StrategyType {
 
     @Override
     public String toString() {
-        return "StrategyType " + description + "\n";
+        return "StrategyType " + description;
     }
 }

@@ -2,9 +2,9 @@ package utils;
 
 import utils.api.CacheableMap;
 import utils.enums.StrategyType;
-import utils.strategies.EmptyStrategy;
-import utils.strategies.LeastFrequentlyUsedStrategy;
-import utils.strategies.LeastRecentlyUsedStrategy;
+import utils.strategies.EmptyMap;
+import utils.strategies.LFUMap;
+import utils.strategies.LRUMap;
 
 public class CacheableUtils {
 
@@ -13,12 +13,12 @@ public class CacheableUtils {
         if (maxLength > 0 && type != null) {
             switch (type) {
                 case LFU:
-                    return new LeastFrequentlyUsedStrategy(maxLength);
+                    return new LFUMap(maxLength);
                 case LRU:
-                    return new LeastRecentlyUsedStrategy(maxLength);
+                    return new LRUMap(maxLength);
             }
         }
 
-        return new EmptyStrategy();
+        return new EmptyMap();
     }
 }

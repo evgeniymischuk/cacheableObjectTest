@@ -4,9 +4,9 @@ import utils.api.CacheableObject;
 import utils.custom.CacheableObjectImpl;
 import utils.enums.StrategyType;
 
-public class LeastFrequentlyUsedStrategy<K, V> extends AbstractCacheableStrategy<K, V> {
+public class LFUMap<K, V> extends AbstractMap<K, V> {
 
-    public LeastFrequentlyUsedStrategy(final int maxSize) {
+    public LFUMap(final int maxSize) {
         super(maxSize, StrategyType.LFU);
         this.objects = new CacheableObjectImpl[maxSize];
     }

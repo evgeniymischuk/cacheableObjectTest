@@ -6,14 +6,14 @@ import utils.custom.CacheableObjectImpl;
 import utils.enums.StrategyType;
 
 
-public abstract class AbstractCacheableStrategy<K, V> implements CacheableMap<K, V> {
+public abstract class AbstractMap<K, V> implements CacheableMap<K, V> {
 
     private final int maxSize;
     private final StrategyType type;
     protected CacheableObject<K, V>[] objects;
     protected int seqNum;
 
-    protected AbstractCacheableStrategy(final int maxSize, final StrategyType type) {
+    protected AbstractMap(final int maxSize, final StrategyType type) {
         this.maxSize = maxSize;
         this.type = type;
     }

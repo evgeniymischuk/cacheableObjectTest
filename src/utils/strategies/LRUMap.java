@@ -4,9 +4,9 @@ import utils.api.CacheableObject;
 import utils.custom.CacheableObjectImpl;
 import utils.enums.StrategyType;
 
-public class LeastRecentlyUsedStrategy<K, V> extends AbstractCacheableStrategy<K, V> {
+public class LRUMap<K, V> extends AbstractMap<K, V> {
 
-    public LeastRecentlyUsedStrategy(final int maxSize) {
+    public LRUMap(final int maxSize) {
         super(maxSize, StrategyType.LRU);
         this.objects = new CacheableObjectImpl[maxSize];
     }
