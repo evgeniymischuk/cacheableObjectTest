@@ -14,7 +14,6 @@ public class LFUMap<K, V> extends AbstractMap<K, V> {
         CacheObject<K, V> replaceObject = getObjects().get(0);
 
         for (final CacheObject<K, V> o : getObjects()) {
-
             if (o.getInvokeCount() < replaceObject.getInvokeCount()) {
                 replaceObject = o;
             }
