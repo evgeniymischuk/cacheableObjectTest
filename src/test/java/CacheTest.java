@@ -10,22 +10,22 @@ public class CacheTest {
         final CacheMap<String, Double> map = CacheUtils.getMapByMaxLengthAndStrategy(3, StrategyType.LFU);
         Assertions.assertEquals(map.getType(), StrategyType.LFU);
 
-        Assertions.assertTrue(map.add("Яблоко", 1.1));
-        Assertions.assertTrue(map.add("Груша", 3.1));
-        Assertions.assertTrue(map.add("Абрикос", 0.1));
+        Assertions.assertTrue(map.add("РЇР±Р»РѕРєРѕ", 1.1));
+        Assertions.assertTrue(map.add("Р“СЂСѓС€Р°", 3.1));
+        Assertions.assertTrue(map.add("РђР±СЂРёРєРѕСЃ", 0.1));
 
-        Assertions.assertNotNull(map.get("Яблоко"));
-        Assertions.assertNotNull(map.get("Яблоко"));
-        Assertions.assertNotNull(map.get("Яблоко"));
-        Assertions.assertNotNull(map.get("Яблоко"));
-        Assertions.assertNotNull(map.get("Абрикос"));
-        Assertions.assertNotNull(map.get("Абрикос"));
-        Assertions.assertNotNull(map.get("Груша"));
+        Assertions.assertNotNull(map.get("РЇР±Р»РѕРєРѕ"));
+        Assertions.assertNotNull(map.get("РЇР±Р»РѕРєРѕ"));
+        Assertions.assertNotNull(map.get("РЇР±Р»РѕРєРѕ"));
+        Assertions.assertNotNull(map.get("РЇР±Р»РѕРєРѕ"));
+        Assertions.assertNotNull(map.get("РђР±СЂРёРєРѕСЃ"));
+        Assertions.assertNotNull(map.get("РђР±СЂРёРєРѕСЃ"));
+        Assertions.assertNotNull(map.get("Р“СЂСѓС€Р°"));
 
-        Assertions.assertTrue(map.add("Квант", 0.000001));
+        Assertions.assertTrue(map.add("РљРІР°РЅС‚", 0.000001));
 
-        //т.к меньше всего было обращений к груша, она должна замениться элементом Квант
-        Assertions.assertNull(map.get("Груша"));
+        //С‚.Рє РјРµРЅСЊС€Рµ РІСЃРµРіРѕ Р±С‹Р»Рѕ РѕР±СЂР°С‰РµРЅРёР№ Рє РіСЂСѓС€Р°, РѕРЅР° РґРѕР»Р¶РЅР° Р·Р°РјРµРЅРёС‚СЊСЃСЏ СЌР»РµРјРµРЅС‚РѕРј РљРІР°РЅС‚
+        Assertions.assertNull(map.get("Р“СЂСѓС€Р°"));
     }
 
     @Test
@@ -33,21 +33,21 @@ public class CacheTest {
         final CacheMap<String, Double> map = CacheUtils.getMapByMaxLengthAndStrategy(3, StrategyType.LRU);
         Assertions.assertEquals(map.getType(), StrategyType.LRU);
 
-        Assertions.assertTrue(map.add("Яблоко", 1.1));
-        Assertions.assertTrue(map.add("Груша", 3.1));
-        Assertions.assertTrue(map.add("Абрикос", 0.1));
+        Assertions.assertTrue(map.add("РЇР±Р»РѕРєРѕ", 1.1));
+        Assertions.assertTrue(map.add("Р“СЂСѓС€Р°", 3.1));
+        Assertions.assertTrue(map.add("РђР±СЂРёРєРѕСЃ", 0.1));
 
-        Assertions.assertNotNull(map.get("Яблоко"));
-        Assertions.assertNotNull(map.get("Яблоко"));
-        Assertions.assertNotNull(map.get("Яблоко"));
-        Assertions.assertNotNull(map.get("Яблоко"));
-        Assertions.assertNotNull(map.get("Абрикос"));
-        Assertions.assertNotNull(map.get("Абрикос"));
-        Assertions.assertNotNull(map.get("Груша"));
+        Assertions.assertNotNull(map.get("РЇР±Р»РѕРєРѕ"));
+        Assertions.assertNotNull(map.get("РЇР±Р»РѕРєРѕ"));
+        Assertions.assertNotNull(map.get("РЇР±Р»РѕРєРѕ"));
+        Assertions.assertNotNull(map.get("РЇР±Р»РѕРєРѕ"));
+        Assertions.assertNotNull(map.get("РђР±СЂРёРєРѕСЃ"));
+        Assertions.assertNotNull(map.get("РђР±СЂРёРєРѕСЃ"));
+        Assertions.assertNotNull(map.get("Р“СЂСѓС€Р°"));
 
-        Assertions.assertTrue(map.add("Квант", 0.000001));
+        Assertions.assertTrue(map.add("РљРІР°РЅС‚", 0.000001));
 
-        //т.к посл. обращение была к груша, она должна остаться
-        Assertions.assertNotNull(map.get("Груша"));
+        //С‚.Рє РїРѕСЃР». РѕР±СЂР°С‰РµРЅРёРµ Р±С‹Р»Р° Рє РіСЂСѓС€Р°, РѕРЅР° РґРѕР»Р¶РЅР° РѕСЃС‚Р°С‚СЊСЃСЏ
+        Assertions.assertNotNull(map.get("Р“СЂСѓС€Р°"));
     }
 }
