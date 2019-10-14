@@ -8,7 +8,10 @@ import utils.strategies.LRUMap;
 
 public class CacheUtils {
 
-    public static <K, V> CacheMap<K, V> getMapByMaxLengthAndStrategy(final int maxLength, final StrategyType type) {
+    public static <K, V> CacheMap<K, V> getMapByMaxLengthAndStrategy(
+            final int maxLength,
+            final StrategyType type
+    ) {
         CacheMap<K, V> cacheMap;
 
         if (maxLength > 0 && type != null) {
